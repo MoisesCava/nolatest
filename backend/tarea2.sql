@@ -9,5 +9,5 @@ SELECT productoId, nombre
 FROM base_datos_productos.dbo.productos
 
 -- CONSULTA DE CARRITO DE COMPRAS --
-SELECT clienteId, productoId, cantidad
+SELECT idCliente as clienteId, productoId, cantidad
 FROM base_datos_carrito.dbo.carrito_de_compras
