@@ -39,6 +39,11 @@ const ChatList = () => {
       const filteredChats = chats.filter((chat) => chat.destinaraty.toLowerCase().includes(destinatary.toLowerCase()));
       setFilterChats(filteredChats);
     }
+
+    if(filter && filterChats.length)
+      setFilterChats([]);
+
+
     setFilter(!filter)
   }
 

@@ -1,16 +1,14 @@
 import React from 'react'
 import ChatList from '../components/chat/ChatList'
 import ChatDetail from '../components/chat/ChatDetail'
-import useMobileVisibility from '../hooks/useMobileVisibility'
+
 
 const MainWrapper = () => {
-  const isMobile = useMobileVisibility(640);
-
   return (
     <div className="w-screen h-screen overflow-hidden">
         <div className="h-screen flex justify-start bg-[#111b21]">
-            <div className={`w-full h-full min-w-[330px] 
-            max-w-[${isMobile ? '520px' : 'none'}] 
+            <div className={`w-full h-full max-w-[640px] 
+
             bg-[#111b21]`}>
                 <ChatList />
             </div>

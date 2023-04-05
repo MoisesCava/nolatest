@@ -7,7 +7,7 @@ const ChatCardList = ({chats}) => {
         <div className="flex flex-col overflow-y-scroll cursor-pointer h-100">
         {/* Chat cards */}
         {chats.map((chat) => {
-            return <ChatCard key={chat.chatId} destinatary={chat.destinaraty}/>
+            return <ChatCard key={chat.chatId} destinatary={chat.destinaraty} date={chat.lastMessage}/>
         })}
         </div>
     )
