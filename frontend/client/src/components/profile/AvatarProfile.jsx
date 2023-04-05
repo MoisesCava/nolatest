@@ -17,4 +17,4 @@ const AvatarProfile = ({ destinatary }) => {
   );
 };
 
-export default AvatarProfile;
+export default React.memo(AvatarProfile);

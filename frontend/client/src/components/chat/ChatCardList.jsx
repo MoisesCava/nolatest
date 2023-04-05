@@ -13,4 +13,4 @@ const ChatCardList = ({chats}) => {
     )
 }
 
-export default ChatCardList
+export default ChatCardList;

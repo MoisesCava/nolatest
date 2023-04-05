@@ -1,11 +1,24 @@
-import React from "react";
+import React, { useCallback, useEffect } from "react";
 import AvatarProfile from "../profile/AvatarProfile";
 import formatDate from "../../utils/formatDate";
+import { chatsToUse } from "../../contexts/ChatsContext";
 
 function ChatCard({ destinatary, date }) {
+
+  const { saveCurrentChat } = chatsToUse();
+
+  const handleSaveCurrentChat = useCallback(
+    () => {
+      saveCurrentChat({ destinatary, date });
+    },
+    [destinatary, date, saveCurrentChat]
+  );
+
   return (
     <div
-      className="flex justify-between items-center cursor-pointer w-100 h-[85px] px-3 hover:bg-[#202d33]"
+      className="flex justify-between items-center 
+      cursor-pointer w-100 h-[85px] px-3 hover:bg-[#202d33]"
+      onClick={handleSaveCurrentChat}
     >
         {/* Profile avatar */}
         <AvatarProfile destinatary={destinatary}/>
@@ -34,4 +47,4 @@ function ChatCard({ destinatary, date }) {
   );
 }
 
-export default ChatCard;
+export default React.memo(ChatCard);
