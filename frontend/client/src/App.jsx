@@ -1,8 +1,13 @@
+import { ChatProvider } from './contexts/ChatsContext'
 import MainWrapper from './pages/MainWrapper'
 
 function App() {
 
-  return <MainWrapper />
+  return (
+    <ChatProvider>
+      <MainWrapper />
+    </ChatProvider>
+  )
 
 }
 
