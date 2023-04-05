@@ -4,13 +4,14 @@ import AvatarProfile from '../profile/AvatarProfile';
 import { MdSearch } from "react-icons/md";
 import { HiDotsVertical } from 'react-icons/hi'
 import IconButton from '../common/IconButton';
+import MessageSection from '../message/MessageSection';
 
 const ChatDetail = () => {
   const { getCurrentChat } = chatsToUse();
   const current = getCurrentChat()
   return (
     <div className="flex flex-col h-screen">
-      <div className="flex justify-between bg-[#202d33] h-[60px] p-3">
+      <div className="flex justify-between bg-[#202d33] h-[65px] p-3">
         {
           current.destinatary && 
           (
@@ -41,6 +42,7 @@ const ChatDetail = () => {
           )
         }
       </div>
+      <MessageSection />
     </div>
   )
 }
