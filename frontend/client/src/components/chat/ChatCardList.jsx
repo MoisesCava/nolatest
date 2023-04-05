@@ -1,0 +1,16 @@
+import React, { useEffect } from 'react'
+import ChatCard from './ChatCard';
+
+const ChatCardList = ({chats}) => {
+
+    return (
+        <div className="flex flex-col overflow-y-scroll cursor-pointer h-100">
+        {/* Chat cards */}
+        {chats.map((chat) => {
+            return <ChatCard key={chat.chatId} destinatary={chat.destinaraty}/>
+        })}
+        </div>
+    )
+}
+
+export default ChatCardList

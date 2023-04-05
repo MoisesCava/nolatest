@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {user as defaultPhoto} from '../../assets'
 import IconButton from '../common/IconButton'
 import { TiGroup } from 'react-icons/ti'
@@ -7,10 +7,40 @@ import { HiDotsVertical } from 'react-icons/hi'
 import { BsFillChatLeftTextFill } from 'react-icons/bs'
 import ChatFilter from './ChatFilter'
 import useMobileVisibility from '../../hooks/useMobileVisibility'
+import ChatCardList from './ChatCardList'
+import { chatsToUse } from '../../contexts/ChatsContext'
+import fetchChats from '../../services/chatService';
 
 const ChatList = () => {
+  const [filter, setFilter] = useState(false);
   
   const isMobile = useMobileVisibility(640);
+
+  const [filterChats, setFilterChats] = useState([])
+
+  const { saveChats, getChats } = chatsToUse();
+
+  useEffect(() => {
+      const doFecthChats = async () => {
+        const data = await fetchChats();
+        saveChats(data)
+      };
+      doFecthChats();
+  }, []);
+
+  const chats = getChats();
+
+  
+
+  const handleFilter = (destinatary) => {
+    if (destinatary === "") {
+      setFilterChats([]);
+    } else {
+      const filteredChats = chats.filter((chat) => chat.destinaraty.toLowerCase().includes(destinatary.toLowerCase()));
+      setFilterChats(filteredChats);
+    }
+    setFilter(!filter)
+  }
 
   return (
     <div id="main-list" className="flex flex-col border-r border-zinc-700 w-100 h-screen">
@@ -28,14 +58,20 @@ const ChatList = () => {
           <IconButton icon={<HiDotsVertical/>}/>
         </div>
       </div>
-      {/* search */}
+      {/* search bar*/}
       <div>
-        <div className={`${isMobile ? "flex justify-between items-center h-[60px] p-2" : "hidden sm:block"}`}>
+        <div className={`${
+          isMobile ? 
+          "flex justify-between items-center h-[60px] p-2" 
+          : 
+          "hidden sm:block"}`
+          }>
           {/* Search input */}
-            <ChatFilter />
+            <ChatFilter filter={filter} onFilter={handleFilter}/>
         </div>
       </div>
       {/* list of chats */}
+      <ChatCardList chats={filterChats.length ? filterChats : chats}/>
     </div>
   )
 }

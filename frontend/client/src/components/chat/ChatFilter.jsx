@@ -1,7 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { BiFilter } from "react-icons/bi";
 
-const ChatFilter = () => {
+const ChatFilter = ({filter, onFilter}) => {
+  const [destinatary, setDestinatary] = useState("");
+
+  const handleInputChange = (e) => {
+    setDestinatary(e.target.value);
+  };
+
+
   return (
     <React.Fragment>
         <input
@@ -12,14 +19,19 @@ const ChatFilter = () => {
           outline-none px-4 py-2 w-[500px] 
           h-[35px] placeholder:text-[#8796a1] 
           placeholder:text-sm placeholder:font-light"
+          value={destinatary}
+          onChange={handleInputChange}
         />
 
         {/* Filter button */}
         <button
-          className="text-2xl m-2 p-1 rounded-full 
-          text-[#8796a1] hover:bg-[#3c454c]
-          bg-transparent focus:outline-none"
-          onClick={() => {}}
+          className={`text-2xl m-2 p-1 rounded-full 
+          bg-transparent outline-none ${
+            filter
+              ? "bg-emerald-500 text-white rounded-full hover:bg-emerald-700"
+              : "text-[#8796a1] hover:bg-[#3c454c]"
+          }`}
+          onClick={() => onFilter(destinatary)}
         >
           <BiFilter />
         </button>
