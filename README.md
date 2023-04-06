@@ -42,6 +42,8 @@
 
 * El filtro de chats es funcional con estados locales.
 
+* El botón para cambiar a modo oscuro es funcional y se realizo siguiendo las instrucciones.
+
 ## 🔧 Uso <a name = "usage"></a>
 Para correr el entorno de desarrollo solo es necesario acceder a la carpeta client, tener el servidor de pruebas corriendo (usando la librería cors) y ejecutar los siguientes comandos (con la librería co):
 
