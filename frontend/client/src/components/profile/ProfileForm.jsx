@@ -1,7 +1,7 @@
 import React from 'react'
 import {user as defaultPhoto} from '../../assets'
 
-const ProfileForm = ({name, photo, handleInputChange}) => {
+const ProfileForm = ({name, photo, handleInputChange, handleImageChange}) => {
 
     return (
         <div
@@ -14,7 +14,16 @@ const ProfileForm = ({name, photo, handleInputChange}) => {
             space-y-6
             ">
                 {/* Profile photo */}
-                <img src={photo ? profile.photo : defaultPhoto} alt="user-photo" className="rounded-full w-[150px]" onClick={()=>{}}/>
+                <label htmlFor="profile-photo">
+                    <img 
+                    src={photo ? photo : defaultPhoto} 
+                    alt="user-photo" className="rounded-full w-[150px] h-[150px]" 
+                    />
+                </label>
+                <input type="file" id="profile-photo" 
+                    onChange={handleImageChange} style={{display: 'none'}} 
+                    accept="image/png, image/jpeg"
+                />
             
                 {/*Name input*/}
                 <div className="bg-[#202c33] w-full h-[70px]">

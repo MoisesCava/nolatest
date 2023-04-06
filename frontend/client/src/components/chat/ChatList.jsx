@@ -58,7 +58,7 @@ const ChatList = ({onProfile}) => {
         {/* photo */}
         {/* Atribyendo al autor de la foto por defecto <a href="https://www.flaticon.com/free-icons/profile" title="profile icons">Profile icons created by Pixel perfect - Flaticon</a> */}
         <div className="flex items-center">
-          <img src={defaultPhoto} alt="user-photo" className="rounded-full w-[40px]" onClick={onProfile}/>
+          <img src={profile.photo ? profile.photo : defaultPhoto} alt="user-photo" className="rounded-full w-[40px]" onClick={onProfile}/>
           <div className="pl-6">
             <h4 className="text-white font-medium">{profile.username}</h4>
           </div>
