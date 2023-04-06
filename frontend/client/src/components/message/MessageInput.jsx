@@ -14,13 +14,17 @@ const MessageInput = () => {
 
   return (
     
-    <div className="flex items-center bg-[#202d33] w-100 h-[70px] p-2">
+    <div className="flex justify-between items-center bg-[#f0f2f5] dark:bg-[#202d33] w-100 h-[70px] p-2">
 
         <input
         type="text"
         placeholder="Type a something"
-        className="bg-[#2c3943] rounded-lg outline-none 
-        text-sm text-neutral-200 w-4/5 h-full px-3 placeholder:text-sm 
+        className="
+        bg-white  
+        dark:bg-[#2c3943] rounded-lg outline-none 
+        text-sm dark:text-neutral-200 
+        text-[#54656f]
+        w-4/5 h-full px-3 placeholder:text-sm 
         placeholder:text-[#8796a1]"
         onChange={handleInputChange}
         ref={inputRef}

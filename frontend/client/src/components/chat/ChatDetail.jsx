@@ -25,7 +25,7 @@ const ChatDetail = () => {
   );
   return (
     <div className="flex flex-col h-screen">
-      <div className="flex justify-between bg-[#202d33] h-[65px] p-3">
+      <div className="flex justify-between bg-[#f0f2f5] dark:bg-[#202d33] min-h-[60px] max-h-[60px] p-3">
         {
           current.destinatary && 
           (
@@ -39,10 +39,10 @@ const ChatDetail = () => {
               {/* Profile preview */}
               <div className="flex flex-col">
                 {/* Destinatary */}
-                <h3 className="text-white font-medium">{current.destinatary}</h3>
+                <h3 className="text-[#54656f] dark:text-white font-medium">{current.destinatary}</h3>
 
                 {/* Status */}
-                <p className="text-[#8796a1] text-xs">online</p>
+                <p className="text-[#54656f] dark:text-[#8796a1] text-xs">online</p>
               </div>
             </div>
           )

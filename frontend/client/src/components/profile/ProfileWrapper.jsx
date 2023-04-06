@@ -49,7 +49,7 @@ const ProfileWrapper = ({onProfile}) => {
 
   return (
     <div className="flex flex-col h-screen w-screen">
-        <div className="flex justify-between bg-[#202d33] h-[65px] p-3">
+        <div className="flex justify-between bg-emerald-700 dark:bg-[#202d33] h-[65px] p-3">
           <div className="flex items-center">
             <div className="pr-2">
               <IconButton onDoClick={onProfile} icon={<AiOutlineArrowLeft />} />

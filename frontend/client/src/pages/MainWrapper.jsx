@@ -7,6 +7,7 @@ import { showChatDetailToUse } from '../contexts/MobileContext';
 import ProfileWrapper from '../components/profile/ProfileWrapper';
 import { getConfig } from '../services/profileService';
 import { profileToUse } from '../contexts/ProfileContext';
+import useDarkMode from '../hooks/useDarkMode';
 
 
 const MainWrapper = () => {
@@ -16,6 +17,7 @@ const MainWrapper = () => {
   const showChatDetail = getShowChatDetail();
   const chatClicked = getChatClicked();
   const { updateProfile } = profileToUse();
+  const { toggleTheme } = useDarkMode();
 
   useEffect(() => {
     saveShowChatDetail(isMobile);
@@ -27,6 +29,7 @@ const MainWrapper = () => {
       updateProfile(data)
     };
     doGetConfig();
+    toggleTheme();
   }, []);
 
   const handleShowProfile = () => {
@@ -42,7 +45,8 @@ const MainWrapper = () => {
             :
             <>
               <div className={`w-full h-full max-w-[640px] 
-             bg-[#111b21]
+              bg-white
+             dark:bg-[#111b21]
               ${!isMobile && chatClicked ? "hidden" : "sm:block"}
               `}>
                 <ChatList onProfile={handleShowProfile}/>

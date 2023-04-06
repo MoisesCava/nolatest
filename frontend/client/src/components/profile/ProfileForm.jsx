@@ -3,30 +3,14 @@ import {user as defaultPhoto} from '../../assets'
 import { BiSun } from 'react-icons/bi'
 import { BiMoon } from 'react-icons/bi'
 import IconButton from '../common/IconButton'
+import useDarkMode from '../../hooks/useDarkMode'
 
 const ProfileForm = ({name, photo, handleInputChange, handleImageChange}) => {
-
-    const [isDarkMode, setIsDarkMode] = useState(false);
-
-    useEffect(() => {
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark') {
-        setIsDarkMode(true);
-        document.documentElement.classList.add('dark');
-        }
-    }, []);
-
-    const toggleTheme = () => {
-        const html = document.documentElement;
-        html.classList.toggle("dark");
-        const isDark = html.classList.contains("dark");
-        localStorage.setItem("theme", isDark ? "dark" : "light");
-        setIsDarkMode(isDark);
-    };
+    const { isDarkMode, toggleTheme } = useDarkMode();
 
     return (
         <div
-        className="bg-[#0a131a] bg-contain overflow-hidden h-full"
+        className="bg-[#f0f2f5] dark:bg-[#0a131a] bg-contain overflow-hidden h-full"
         >
             <div 
             className="h-screen flex flex-col 
@@ -47,15 +31,16 @@ const ProfileForm = ({name, photo, handleInputChange, handleImageChange}) => {
                 />
             
                 {/*Name input*/}
-                <div className="bg-[#202c33] w-full h-[70px]">
+                <div className="bg-white dark:bg-[#202c33] w-full h-[70px]">
                     <div className="flex flex-col justify-center items-start pl-7 h-full">
-                        <span className="text-white font-bold text-sm">Your name</span>
+                        <span className="text-[#54656f] dark:text-white font-bold text-sm">Your name</span>
                         <input
                         type="text"
                         placeholder="Name"
-                        className="rounded-lg bg-[#202d33] 
-                        text-[#8796a1] text-sm font-light 
-                        outline-none px-4 py-2 w-[500px] 
+                        className="rounded-lg bg-white dark:bg-[#202d33] 
+                        dark:text-[#8796a1] text-sm font-light 
+                        text-[#54656f]
+                        outline-none px-4 py-2 w-full 
                         h-[35px] placeholder:text-[#8796a1] 
                         placeholder:text-sm placeholder:font-light"
                         value={name}
@@ -68,14 +53,14 @@ const ProfileForm = ({name, photo, handleInputChange, handleImageChange}) => {
                 {
                     isDarkMode?
                     <>
-                        <span className="text-white font-bold text-sm">Change to dark mode</span>
-                        <IconButton icon={<BiMoon/>} onDoClick={toggleTheme}/>
+                        <span className="text-white font-bold text-sm">Change to light mode</span>
+                        <IconButton icon={<BiSun/>} onDoClick={toggleTheme}/>
                     </>
                     
                     :
                     <>
-                        <span className="text-black font-bold text-sm">Change to Light mode</span>
-                        <IconButton icon={<BiSun/>} onDoClick={toggleTheme}/>
+                        <span className="text-[#54656f] font-bold text-sm">Change to dark mode</span>
+                        <IconButton icon={<BiMoon/>} onDoClick={toggleTheme}/>
                     </>
                 }
             

@@ -4,7 +4,8 @@ const IconButton = ({icon, onDoClick, hiddeIcon = false}) => {
   return (
     <button 
     className={`
-    text-[#aebac1] text-xl p-2 rounded-full bg-transparent 
+    text-[##54656f]
+    dark:text-[#aebac1] text-xl p-2 rounded-full bg-transparent 
     focus:outline-none ${hiddeIcon ? 'sm:block hidden' : ''}`}
     onClick={onDoClick}
     >

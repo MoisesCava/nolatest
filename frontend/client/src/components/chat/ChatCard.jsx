@@ -26,21 +26,21 @@ function ChatCard({ destinatary, date }) {
   return (
     <div
       className="flex justify-between items-center 
-      cursor-pointer w-100 h-[85px] px-3 hover:bg-[#202d33]"
+      cursor-pointer w-100 h-[85px] px-3 hover:bg-[#f0f2f5] dark:hover:bg-[#202d33]"
       onClick={handleSaveCurrentChat}
     >
         {/* Profile avatar */}
         <AvatarProfile destinatary={destinatary}/>
     
         {/* Chat preview */}
-        <div className="flex justify-between border-t border-zinc-700 flex-grow py-3">
+        <div className="flex justify-between border-t border-neutral-300 dark:border-zinc-700 flex-grow py-3">
             
-            <div className="flex flex-col justify-between flex-grow text-white">
+            <div className="flex flex-col justify-between flex-grow text-[#54656f] dark:text-white">
                 {/* Destinatary name */}
                 <h2 className="font-medium mb-1">{destinatary}</h2>
 
                 {/* Message */}
-                <p className="text-sm text-neutral-400">
+                <p className="text-sm text-gray-500 dark:text-neutral-400">
                     Lorem ipsum dolor sit amet, consectetur.
                 </p>
             </div>

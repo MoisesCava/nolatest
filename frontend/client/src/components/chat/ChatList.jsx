@@ -52,15 +52,15 @@ const ChatList = ({onProfile}) => {
   }
 
   return (
-    <div id="main-list" className="flex flex-col border-r border-zinc-700 w-full h-screen">
+    <div id="main-list" className="flex flex-col border-r border-neutral-300 dark:border-zinc-700 w-full h-screen">
       {/* profile */}
-      <div className="flex justify-between items-center bg-[#202c33] h-[60px] p-3">
+      <div className="flex justify-between items-center bg-[#f0f2f5] dark:bg-[#202c33] min-h-[60px] max-h-[60px] p-3">
         {/* photo */}
         {/* Atribyendo al autor de la foto por defecto <a href="https://www.flaticon.com/free-icons/profile" title="profile icons">Profile icons created by Pixel perfect - Flaticon</a> */}
         <div className="flex items-center">
           <img src={profile.photo ? profile.photo : defaultPhoto} alt="user-photo" className="rounded-full w-[40px]" onClick={onProfile}/>
           <div className="pl-6">
-            <h4 className="text-white font-medium">{profile.username}</h4>
+            <h4 className="text-[#54656f] dark:text-white font-medium">{profile.username}</h4>
           </div>
         </div>
 
