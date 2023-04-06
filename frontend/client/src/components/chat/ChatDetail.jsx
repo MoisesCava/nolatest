@@ -9,6 +9,7 @@ import MessageSection from '../message/MessageSection';
 import useMobileVisibility from '../../hooks/useMobileVisibility';
 import { mobileBreakpoint } from '../../utils/customBreakPoints';
 import { showChatDetailToUse } from '../../contexts/MobileContext';
+import MessageInput from '../message/MessageInput';
 
 const ChatDetail = () => {
   const isMobile = useMobileVisibility(mobileBreakpoint);
@@ -58,7 +59,11 @@ const ChatDetail = () => {
           )
         }
       </div>
+
       <MessageSection />
+
+      <MessageInput />
+
     </div>
   )
 }
