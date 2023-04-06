@@ -10,11 +10,12 @@ import useMobileVisibility from '../../hooks/useMobileVisibility'
 import ChatCardList from './ChatCardList'
 import { chatsToUse } from '../../contexts/ChatsContext'
 import fetchChats from '../../services/chatService';
+import { mobileBreakpoint } from '../../utils/customBreakPoints'
 
 const ChatList = () => {
   const [filter, setFilter] = useState(false);
   
-  const isMobile = useMobileVisibility(640);
+  const isMobile = useMobileVisibility(mobileBreakpoint);
 
   const [filterChats, setFilterChats] = useState([])
 

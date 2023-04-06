@@ -2,17 +2,26 @@ import React, { useCallback, useEffect } from "react";
 import AvatarProfile from "../profile/AvatarProfile";
 import formatDate from "../../utils/formatDate";
 import { chatsToUse } from "../../contexts/ChatsContext";
+import { showChatDetailToUse } from "../../contexts/MobileContext";
 
 function ChatCard({ destinatary, date }) {
-
   const { saveCurrentChat } = chatsToUse();
+  const { getShowChatDetail, saveChatClicked } = showChatDetailToUse();
+  const chatDetailVisibility = getShowChatDetail();
 
   const handleSaveCurrentChat = useCallback(
     () => {
       saveCurrentChat({ destinatary, date });
+      if(!chatDetailVisibility){
+        saveChatClicked(true)
+      }else{
+        saveChatClicked(false)
+      }
+        
     },
-    [destinatary, date, saveCurrentChat]
+    [destinatary, date, saveCurrentChat, chatDetailVisibility, saveChatClicked]
   );
+
 
   return (
     <div

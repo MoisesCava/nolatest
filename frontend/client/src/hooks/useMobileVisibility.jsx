@@ -5,7 +5,7 @@ const useMobileVisibility = (breakpoint) => {
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < breakpoint) {
+      if (window.innerWidth <= breakpoint) {
         setIsChatDetailVisible(false);
       } else {
         setIsChatDetailVisible(true);
