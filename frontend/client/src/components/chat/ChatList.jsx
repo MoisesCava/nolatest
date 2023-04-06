@@ -12,7 +12,7 @@ import { chatsToUse } from '../../contexts/ChatsContext'
 import fetchChats from '../../services/chatService';
 import { mobileBreakpoint } from '../../utils/customBreakPoints'
 
-const ChatList = () => {
+const ChatList = ({onProfile}) => {
   const [filter, setFilter] = useState(false);
   
   const isMobile = useMobileVisibility(mobileBreakpoint);
@@ -49,12 +49,12 @@ const ChatList = () => {
   }
 
   return (
-    <div id="main-list" className="flex flex-col border-r border-zinc-700 w-100 h-screen">
+    <div id="main-list" className="flex flex-col border-r border-zinc-700 w-full h-screen">
       {/* profile */}
       <div className="flex justify-between items-center bg-[#202c33] h-[60px] p-3">
         {/* photo */}
         {/* Atribyendo al autor de la foto por defecto <a href="https://www.flaticon.com/free-icons/profile" title="profile icons">Profile icons created by Pixel perfect - Flaticon</a> */}
-        <img src={defaultPhoto} alt="user-photo" className="rounded-full w-[40px]"/>
+        <img src={defaultPhoto} alt="user-photo" className="rounded-full w-[40px]" onClick={onProfile}/>
 
         {/* options */}
         <div className="flex justify-end w-[175px] sm:justify-between">

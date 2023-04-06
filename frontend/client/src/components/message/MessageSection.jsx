@@ -10,8 +10,7 @@ const MessageSection = () => {
         backgroundImage: `url(${bgDark})`,
     }}
     >
-        hola
-  </div>
+    </div>
   )
 }
 
