@@ -8,17 +8,16 @@ const getConfig = async () => {
     }
 };
 
-const updateConfig = async (username, photo) => {
+const updateConfig = async (profile) => {
     try {
         const response = await fetch('http://localhost:3000/config', {
             method: 'POST',
             headers: {
             'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ username, photo })
+            body: JSON.stringify(profile )
         });
-        const data = await response.json();
-        return data;
+        return response.statusText;
     } catch (error) {
         console.error(error);
     }

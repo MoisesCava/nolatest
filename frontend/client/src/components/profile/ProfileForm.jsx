@@ -1,12 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import {user as defaultPhoto} from '../../assets'
 
-const ProfileForm = () => {
-    const [name, setName] = useState("");
-
-    const handleInputChange = (e) => {
-    setName(e.target.value);
-    };
+const ProfileForm = ({name, photo, handleInputChange}) => {
 
     return (
         <div
@@ -19,7 +14,7 @@ const ProfileForm = () => {
             space-y-6
             ">
                 {/* Profile photo */}
-                <img src={defaultPhoto} alt="user-photo" className="rounded-full w-[150px]" onClick={()=>{}}/>
+                <img src={photo ? profile.photo : defaultPhoto} alt="user-photo" className="rounded-full w-[150px]" onClick={()=>{}}/>
             
                 {/*Name input*/}
                 <div className="bg-[#202c33] w-full h-[70px]">
