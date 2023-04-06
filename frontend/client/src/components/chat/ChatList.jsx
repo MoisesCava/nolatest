@@ -11,6 +11,7 @@ import ChatCardList from './ChatCardList'
 import { chatsToUse } from '../../contexts/ChatsContext'
 import fetchChats from '../../services/chatService';
 import { mobileBreakpoint } from '../../utils/customBreakPoints'
+import { profileToUse } from '../../contexts/ProfileContext'
 
 const ChatList = ({onProfile}) => {
   const [filter, setFilter] = useState(false);
@@ -20,6 +21,8 @@ const ChatList = ({onProfile}) => {
   const [filterChats, setFilterChats] = useState([])
 
   const { saveChats, getChats } = chatsToUse();
+
+  const { profile } = profileToUse();
 
   useEffect(() => {
       const doFecthChats = async () => {
@@ -54,7 +57,12 @@ const ChatList = ({onProfile}) => {
       <div className="flex justify-between items-center bg-[#202c33] h-[60px] p-3">
         {/* photo */}
         {/* Atribyendo al autor de la foto por defecto <a href="https://www.flaticon.com/free-icons/profile" title="profile icons">Profile icons created by Pixel perfect - Flaticon</a> */}
-        <img src={defaultPhoto} alt="user-photo" className="rounded-full w-[40px]" onClick={onProfile}/>
+        <div className="flex items-center">
+          <img src={defaultPhoto} alt="user-photo" className="rounded-full w-[40px]" onClick={onProfile}/>
+          <div className="pl-6">
+            <h4 className="text-white font-medium">{profile.username}</h4>
+          </div>
+        </div>
 
         {/* options */}
         <div className="flex justify-end w-[175px] sm:justify-between">

@@ -5,6 +5,8 @@ import { mobileBreakpoint } from '../utils/customBreakPoints';
 import useMobileVisibility from '../hooks/useMobileVisibility';
 import { showChatDetailToUse } from '../contexts/MobileContext';
 import ProfileWrapper from '../components/profile/ProfileWrapper';
+import { getConfig } from '../services/profileService';
+import { profileToUse } from '../contexts/ProfileContext';
 
 
 const MainWrapper = () => {
@@ -13,10 +15,19 @@ const MainWrapper = () => {
   const { saveShowChatDetail, getShowChatDetail, getChatClicked } = showChatDetailToUse();
   const showChatDetail = getShowChatDetail();
   const chatClicked = getChatClicked();
+  const { updateProfile } = profileToUse();
 
   useEffect(() => {
     saveShowChatDetail(isMobile);
   }, [isMobile, showChatDetail, saveShowChatDetail]);
+
+  useEffect(() => {
+    const doGetConfig = async () => {
+      const data = await getConfig();
+      updateProfile(data)
+    };
+    doGetConfig();
+  }, []);
 
   const handleShowProfile = () => {
     setShowProfile(!showProfile)

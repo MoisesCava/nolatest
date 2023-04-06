@@ -7,6 +7,7 @@ const ProfileForm = () => {
     const handleInputChange = (e) => {
     setName(e.target.value);
     };
+
     return (
         <div
         className="bg-[#0a131a] bg-contain overflow-hidden h-full"
