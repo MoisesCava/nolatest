@@ -1,7 +1,28 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {user as defaultPhoto} from '../../assets'
+import { BiSun } from 'react-icons/bi'
+import { BiMoon } from 'react-icons/bi'
+import IconButton from '../common/IconButton'
 
 const ProfileForm = ({name, photo, handleInputChange, handleImageChange}) => {
+
+    const [isDarkMode, setIsDarkMode] = useState(false);
+
+    useEffect(() => {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+        setIsDarkMode(true);
+        document.documentElement.classList.add('dark');
+        }
+    }, []);
+
+    const toggleTheme = () => {
+        const html = document.documentElement;
+        html.classList.toggle("dark");
+        const isDark = html.classList.contains("dark");
+        localStorage.setItem("theme", isDark ? "dark" : "light");
+        setIsDarkMode(isDark);
+    };
 
     return (
         <div
@@ -42,6 +63,22 @@ const ProfileForm = ({name, photo, handleInputChange, handleImageChange}) => {
                         />
                     </div>
                 </div>
+
+                {/* Switch theme */}
+                {
+                    isDarkMode?
+                    <>
+                        <span className="text-white font-bold text-sm">Change to dark mode</span>
+                        <IconButton icon={<BiMoon/>} onDoClick={toggleTheme}/>
+                    </>
+                    
+                    :
+                    <>
+                        <span className="text-black font-bold text-sm">Change to Light mode</span>
+                        <IconButton icon={<BiSun/>} onDoClick={toggleTheme}/>
+                    </>
+                }
+            
             </div>
         </div>
     )
